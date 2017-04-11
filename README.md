@@ -13,7 +13,7 @@ What you will find here is demo code from lectures plus my attempt at programmin
 - IX. `Autolayout`
 - X. `Animation`
 - XI. `Segues`
-- XII. `Notifications, Application Lifecycle, Persisntence`
+- XII. `Notifications, Application Lifecycle, Persistence`
 
 #### Lectures
 - [x] 1. `Introduction to iOS 10, Xcode 8 and Swift 3`
@@ -26,14 +26,19 @@ What you will find here is demo code from lectures plus my attempt at programmin
 - [ ] 8. `Multithreading and Text Field`
 - [ ] 9. `Table View`
 - [ ] 10. `Core Data`
-- [ ] 11. `Core Data Demo`   
+- [ ] 11. `Core Data Demo`
+- [ ] 12. `Autolayout`
+- [ ] 13. `Timer and Animation`
+- [ ] 14. `Dynamic Animation Demo`
+- [ ] 15. `More Segues`
 ...
 
 #### Programming Project
-- [ ] 1: `Calculator`
+- [x] 1: `Calculator`
 - [ ] 2: `Calculator Brain`
 - [ ] 3: `Graphing Calculator`
 - [ ] 4: `Smashtag Mentions`   
+- [ ] 5: `Smashtag Mentions Popularity`
 ...   
 
 Disclaimer: Huge part of the code you will find here is not mine since the course wants you to follow the demo and then expand its functionallity with programming assignments.   
