@@ -41,8 +41,8 @@ class ViewController: UIViewController {
         }
         set {
             if newValue.truncatingRemainder(dividingBy: 1) == 0 {
-                let gowno = String(newValue).characters.dropLast(2)
-                display.text = String(gowno)
+                let formattedValue = String(newValue).characters.dropLast(2)
+                display.text = String(formattedValue)
             } else {
                 display.text = brain.formatter.string(from: NSNumber(value: newValue))
             }
@@ -56,7 +56,6 @@ class ViewController: UIViewController {
         descriptionDisplay.text = " "
         userIsInTheMiddleOfTyping = false
         brain = CalculatorBrain()
-        
     }
     
     @IBAction func performOperation(_ sender: UIButton) {
@@ -68,15 +67,12 @@ class ViewController: UIViewController {
         }
         if let mathematicalSymbol = sender.currentTitle {
             brain.performOperation(mathematicalSymbol)
-            if brain.resultIsPending {
-                descriptionDisplay.text = "..."
-            }
         }
         if let result = brain.result {
             displayValue = result
-            if !brain.resultIsPending {
-                descriptionDisplay.text = " = "
-            }
+        }
+        if let description = brain.description {
+            descriptionDisplay.text = description + (brain.resultIsPending ? "..." : " = ")
         }
     }
     
