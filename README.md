@@ -20,7 +20,7 @@ What you will find here is demo code from lectures plus my attempt at programmin
 - [x] 2. `MVC; iOS, Xcode and Swift Demonstration`
 - [x] 3. `More Swift and the Foundation Framework`
 - [x] 4. `Views`
-- [ ] 5. `Gestures and Multiple MVCs`
+- [x] 5. `Gestures and Multiple MVCs`
 - [ ] 6. `Multiple MVCs, View Controller Lifecycle, and Memory Management`
 - [ ] 7. `Error Handling, Extensions, Protocols, Delegation, and Scroll View`
 - [ ] 8. `Multithreading and Text Field`

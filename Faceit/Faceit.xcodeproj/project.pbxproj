@@ -13,6 +13,7 @@
 		411ABB481E978E5200756C5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 411ABB471E978E5200756C5E /* Assets.xcassets */; };
 		411ABB4B1E978E5200756C5E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 411ABB491E978E5200756C5E /* LaunchScreen.storyboard */; };
 		411ABB541E978EB100756C5E /* FaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411ABB531E978EB100756C5E /* FaceView.swift */; };
+		41BE8D8E1E9D558400924451 /* FacialExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BE8D8D1E9D558400924451 /* FacialExpression.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		411ABB4A1E978E5200756C5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		411ABB4C1E978E5200756C5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		411ABB531E978EB100756C5E /* FaceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceView.swift; sourceTree = "<group>"; };
+		41BE8D8D1E9D558400924451 /* FacialExpression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FacialExpression.swift; path = ../FacialExpression.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				411ABB521E978E6600756C5E /* Supporting Files */,
 				411ABB421E978E5200756C5E /* ViewController.swift */,
+				41BE8D8D1E9D558400924451 /* FacialExpression.swift */,
 				411ABB531E978EB100756C5E /* FaceView.swift */,
 				411ABB441E978E5200756C5E /* Main.storyboard */,
 			);
@@ -149,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				411ABB431E978E5200756C5E /* ViewController.swift in Sources */,
+				41BE8D8E1E9D558400924451 /* FacialExpression.swift in Sources */,
 				411ABB411E978E5200756C5E /* AppDelegate.swift in Sources */,
 				411ABB541E978EB100756C5E /* FaceView.swift in Sources */,
 			);
@@ -316,6 +320,7 @@
 				411ABB511E978E5200756C5E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
