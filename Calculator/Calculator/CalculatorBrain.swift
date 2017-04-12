@@ -8,6 +8,7 @@
 
 import Foundation
 
+var sequence = [String: Double]()
 
 struct CalculatorBrain {
     
@@ -28,7 +29,7 @@ struct CalculatorBrain {
         "cos" : Operation.unaryOperation(cos, {"cos(\($0))"}),
         "sin" : Operation.unaryOperation(sin, {"sin(\($0))"}),
         "tan" : Operation.unaryOperation(tan, {"tan(\($0))"}),
-        "^2" : Operation.unaryOperation({ $0 * $0 }, {"(\($0) * \($0))"}),
+        "x²" : Operation.unaryOperation({ $0 * $0 }, {"(\($0))²"}),
         "±" : Operation.unaryOperation({ -$0 }, {"-(\($0))"}),
         "%" : Operation.unaryOperation({ $0 * 0.01 }, {"\($0) %"}),
         "×" : Operation.binaryOperation({ $0 * $1 }, {"\($0)  *  \($1)"}),
@@ -43,24 +44,31 @@ struct CalculatorBrain {
             switch operation {
             case .constant(let value):
                 accumulator = (value, symbol)
+                sequence[symbol] = value
             case .unaryOperation(let function, let description):
                 if accumulator != nil {
                     accumulator = (function(accumulator!.0), description(accumulator!.1))
+                    sequence[symbol] = function(accumulator!.0)
                 }
             case .binaryOperation(let function, let description):
                 performPendingBinaryOperation()
                 if accumulator != nil {
                     pendingBinaryOperation = PendingBinaryOperation(description: description, function: function ,firstOperand: accumulator!)
+                    sequence[symbol] = accumulator!.0
                     accumulator = nil
                 }
             case .equals:
                 performPendingBinaryOperation()
+                sequence[symbol] = accumulator!.0
             }
         }
     }
 
     func evaluate(using variables: Dictionary<String, Double>? = nil) -> (result: Double?, isPending: Bool, description: String){
         // Programming Assingment 2 : Task 4
+        if resultIsPending {
+            
+        }
         return (nil, false, "")
     }
     
@@ -84,12 +92,14 @@ struct CalculatorBrain {
     }
     
     mutating func setOperand(_ operand: Double){
+        sequence[String(operand)] = operand
         accumulator = (operand, "\(operand)")
     }
     
     mutating func setOperand(variable named: String){
         // Programming Assingment 2 : Task 3
-        accumulator = (0, "M")
+        sequence[named] = sequence[named] ?? 0
+        accumulator = (sequence[named]!, named)
     }
     
     var result: Double? {
@@ -132,3 +142,4 @@ struct CalculatorBrain {
         }
     }
 }
+

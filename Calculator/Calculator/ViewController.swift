@@ -1,5 +1,4 @@
-
-// Programming Assingment 2 : Task 10//
+//
 //  ViewController.swift
 //  Calculator
 //
@@ -62,7 +61,14 @@ class ViewController: UIViewController {
     
     @IBAction func setVariable(_ sender: UIButton) {
         // Programming Assingment 2 : Task 7
+        //if sequence.count > 1 { sequence.removeAll() }
+        sequence["M"] = displayValue
         variableDisplay.text = "M = \(displayValue)"
+        let evaluationResult = brain.evaluate(using: sequence)
+        if evaluationResult.isPending {
+            displayValue = evaluationResult.result!
+            descriptionDisplay.text = evaluationResult.description
+        }
     }
     
     @IBAction func enterVariable(_ sender: UIButton) {
