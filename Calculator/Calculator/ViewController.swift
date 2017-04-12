@@ -1,4 +1,5 @@
-//
+
+// Programming Assingment 2 : Task 10//
 //  ViewController.swift
 //  Calculator
 //
@@ -11,10 +12,10 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var display: UILabel!
+    @IBOutlet weak var variableDisplay: UILabel!
     @IBOutlet weak var descriptionDisplay: UILabel!
     
     var userIsInTheMiddleOfTyping = false
-    
     
     @IBAction func touchDigit(_ sender: UIButton) {
         let digit = sender.currentTitle!
@@ -54,13 +55,26 @@ class ViewController: UIViewController {
     @IBAction func clear(_ sender: UIButton) {
         display.text = "0"
         descriptionDisplay.text = " "
+        variableDisplay.text = " "
         userIsInTheMiddleOfTyping = false
         brain = CalculatorBrain()
     }
     
+    @IBAction func setVariable(_ sender: UIButton) {
+        // Programming Assingment 2 : Task 7
+        variableDisplay.text = "M = \(displayValue)"
+    }
+    
+    @IBAction func enterVariable(_ sender: UIButton) {
+        brain.setOperand(variable: "M")
+        // Programming Assingment 2 : Task 7
+    }
+    
+    @IBAction func undo(_ sender: UIButton) {
+        // Programming Assingment 2 : Task 10
+    }
+    
     @IBAction func performOperation(_ sender: UIButton) {
-        brain.formatter.maximumFractionDigits = 6
-        brain.formatter.numberStyle = .decimal
         if userIsInTheMiddleOfTyping {
             brain.setOperand(displayValue)
             userIsInTheMiddleOfTyping = false

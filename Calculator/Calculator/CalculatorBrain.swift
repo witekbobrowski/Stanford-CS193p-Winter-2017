@@ -12,7 +12,7 @@ import Foundation
 struct CalculatorBrain {
     
     private var accumulator: (Double, String)?
-    var formatter = NumberFormatter()
+    private var x: Double?
     
     private enum Operation {
         case constant(Double)
@@ -24,16 +24,17 @@ struct CalculatorBrain {
     private var operations: Dictionary<String, Operation> = [
         "π" : Operation.constant(Double.pi),
         "e" : Operation.constant(M_E),
-        "√" : Operation.unaryOperation(sqrt, {"√(" + $0 + ")"}),
-        "cos" : Operation.unaryOperation(cos, {"cos(" + $0 + ")"}),
-        "sin" : Operation.unaryOperation(sin, {"sin(" + $0 + ")"}),
-        "^2" : Operation.unaryOperation({ $0 * $0 }, {"(" + $0 + ")^2"}),
-        "±" : Operation.unaryOperation({ -$0 }, {"-(" + $0 + ")"}),
-        "%" : Operation.unaryOperation({ $0 * 0.01 }, {$0 + "%"}),
-        "×" : Operation.binaryOperation({ $0 * $1 }, {$0 + " * " + $1}),
-        "÷" : Operation.binaryOperation({ $0 / $1 }, {$0 + " : " + $1}),
-        "+" : Operation.binaryOperation({ $0 + $1 }, {$0 + " + " + $1}),
-        "−" : Operation.binaryOperation({ $0 - $1 }, {$0 + " - " + $1}),
+        "√" : Operation.unaryOperation(sqrt, {"√(\($0))"}),
+        "cos" : Operation.unaryOperation(cos, {"cos(\($0))"}),
+        "sin" : Operation.unaryOperation(sin, {"sin(\($0))"}),
+        "tan" : Operation.unaryOperation(tan, {"tan(\($0))"}),
+        "^2" : Operation.unaryOperation({ $0 * $0 }, {"(\($0) * \($0))"}),
+        "±" : Operation.unaryOperation({ -$0 }, {"-(\($0))"}),
+        "%" : Operation.unaryOperation({ $0 * 0.01 }, {"\($0) %"}),
+        "×" : Operation.binaryOperation({ $0 * $1 }, {"\($0)  *  \($1)"}),
+        "÷" : Operation.binaryOperation({ $0 / $1 }, {"\($0)  :  \($1)"}),
+        "+" : Operation.binaryOperation({ $0 + $1 }, {"\($0)  +  \($1)"}),
+        "−" : Operation.binaryOperation({ $0 - $1 }, {"\($0)  -  \($1)"}),
         "=" : Operation.equals
     ]
     
@@ -57,6 +58,11 @@ struct CalculatorBrain {
             }
         }
     }
+
+    func evaluate(using variables: Dictionary<String, Double>? = nil) -> (result: Double?, isPending: Bool, description: String){
+        // Programming Assingment 2 : Task 4
+        return (nil, false, "")
+    }
     
     private mutating func performPendingBinaryOperation() {
         if pendingBinaryOperation != nil && accumulator != nil {
@@ -79,6 +85,11 @@ struct CalculatorBrain {
     
     mutating func setOperand(_ operand: Double){
         accumulator = (operand, "\(operand)")
+    }
+    
+    mutating func setOperand(variable named: String){
+        // Programming Assingment 2 : Task 3
+        accumulator = (0, "M")
     }
     
     var result: Double? {
@@ -109,6 +120,15 @@ struct CalculatorBrain {
             } else {
                 return accumulator?.1
             }
+        }
+    }
+    
+    var formatter:NumberFormatter {
+        get{
+            let formatter = NumberFormatter()
+            formatter.maximumFractionDigits = 6
+            formatter.numberStyle = .decimal
+            return formatter
         }
     }
 }
