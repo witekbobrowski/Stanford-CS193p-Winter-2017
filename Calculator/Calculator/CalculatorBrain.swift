@@ -8,23 +8,27 @@
 
 import Foundation
 
-var sequence = [String: Double]()
-
 struct CalculatorBrain {
     
     private var accumulator: (Double, String)?
-    private var x: Double?
     
     private enum Operation {
-        case constant(Double)
+        case constant(Double, String)
         case unaryOperation((Double) -> Double, (String) -> String)
         case binaryOperation((Double, Double) -> Double, (String, String) -> String)
         case equals
     }
     
+    // Custom enum to help distinguish things that are being entered into the CalculatorBrain
+    private enum Entries {
+        case operand(Double)
+        case operation(Operation)
+        case variable(String)
+    }
+    
     private var operations: Dictionary<String, Operation> = [
-        "π" : Operation.constant(Double.pi),
-        "e" : Operation.constant(M_E),
+        "π" : Operation.constant(Double.pi, "π"),
+        "e" : Operation.constant(M_E, "e"),
         "√" : Operation.unaryOperation(sqrt, {"√(\($0))"}),
         "cos" : Operation.unaryOperation(cos, {"cos(\($0))"}),
         "sin" : Operation.unaryOperation(sin, {"sin(\($0))"}),
@@ -39,37 +43,81 @@ struct CalculatorBrain {
         "=" : Operation.equals
     ]
     
+    private var sequence = [Entries]()
+    
     mutating func performOperation(_ symbol: String){
         if let operation = operations[symbol] {
+            sequence.append(Entries.operation(operation))
             switch operation {
-            case .constant(let value):
-                accumulator = (value, symbol)
-                sequence[symbol] = value
+            case .constant(let value, let description):
+                accumulator = (value, description)
             case .unaryOperation(let function, let description):
                 if accumulator != nil {
                     accumulator = (function(accumulator!.0), description(accumulator!.1))
-                    sequence[symbol] = function(accumulator!.0)
                 }
             case .binaryOperation(let function, let description):
                 performPendingBinaryOperation()
                 if accumulator != nil {
                     pendingBinaryOperation = PendingBinaryOperation(description: description, function: function ,firstOperand: accumulator!)
-                    sequence[symbol] = accumulator!.0
                     accumulator = nil
                 }
             case .equals:
                 performPendingBinaryOperation()
-                sequence[symbol] = accumulator!.0
             }
         }
     }
 
+    // Programming Assingment 2 : Task 4
     func evaluate(using variables: Dictionary<String, Double>? = nil) -> (result: Double?, isPending: Bool, description: String){
-        // Programming Assingment 2 : Task 4
-        if resultIsPending {
-            
+        
+        // Under construction! Thanks Paul for making evaluate() NOT mutating... 
+        
+        var result: Double?
+        var isPending: Bool = false
+        var description: String = ""
+        
+        var tempSequence = sequence
+        var tempDescription = ""
+        
+        func performOperation(_ operation: Operation){
+            switch operation {
+            case .constant(let value, let symbol):
+                result = value
+                tempDescription = symbol
+            case .unaryOperation(let function, let text):
+                if result != nil {
+                    result = function(result!)
+                }
+                tempDescription = text(description)
+            case .binaryOperation(let function, let text):
+                if result != nil {
+                    
+                    isPending = true
+                }
+            case .equals:
+                isPending = false
+            }
         }
-        return (nil, false, "")
+
+        for entry in tempSequence {
+            switch entry{
+            case .operand(let value):
+                result = value
+                tempDescription = String(value)
+            case .operation(let operation):
+                performOperation(operation)
+            case .variable(let variable):
+                tempDescription = variable
+                if let dictionary = variables {
+                    result = dictionary[variable]
+                } else {
+                    result = 0
+                }
+            }
+            description += tempDescription
+        }
+    
+        return (result, isPending, description)
     }
     
     private mutating func performPendingBinaryOperation() {
@@ -92,14 +140,14 @@ struct CalculatorBrain {
     }
     
     mutating func setOperand(_ operand: Double){
-        sequence[String(operand)] = operand
+        sequence.append(Entries.operand(operand))
         accumulator = (operand, "\(operand)")
     }
     
     mutating func setOperand(variable named: String){
         // Programming Assingment 2 : Task 3
-        sequence[named] = sequence[named] ?? 0
-        accumulator = (sequence[named]!, named)
+        sequence.append(Entries.variable(named))
+        accumulator = (0, named)
     }
     
     var result: Double? {

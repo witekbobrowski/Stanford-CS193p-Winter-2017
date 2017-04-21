@@ -49,7 +49,17 @@ class ViewController: UIViewController {
         }
     }
     
+    var evaluatedResult: (result: Double?, isPending: Bool, description: String)? = nil{
+        didSet {
+            if let result = evaluatedResult!.result{
+                displayValue = result
+            }
+            descriptionDisplay.text = (evaluatedResult!.isPending ? "\(evaluatedResult!.description) ..." : "\(evaluatedResult!.description) = ")
+        }
+    }
+    
     private var brain = CalculatorBrain()
+    private var variableDictionary = [String: Double]()
     
     @IBAction func clear(_ sender: UIButton) {
         display.text = "0"
@@ -61,19 +71,16 @@ class ViewController: UIViewController {
     
     @IBAction func setVariable(_ sender: UIButton) {
         // Programming Assingment 2 : Task 7
-        //if sequence.count > 1 { sequence.removeAll() }
-        sequence["M"] = displayValue
-        variableDisplay.text = "M = \(displayValue)"
-        let evaluationResult = brain.evaluate(using: sequence)
-        if evaluationResult.isPending {
-            displayValue = evaluationResult.result!
-            descriptionDisplay.text = evaluationResult.description
-        }
+        let symbol = String(sender.currentTitle!.characters.dropFirst())
+        variableDictionary[symbol] = displayValue
+        variableDisplay.text = "\(symbol) = \(displayValue)"
+        evaluatedResult = brain.evaluate(using: variableDictionary)
     }
     
     @IBAction func enterVariable(_ sender: UIButton) {
-        brain.setOperand(variable: "M")
         // Programming Assingment 2 : Task 7
+        brain.setOperand(variable: sender.currentTitle!)
+        evaluatedResult = brain.evaluate()
     }
     
     @IBAction func undo(_ sender: UIButton) {
