@@ -34,7 +34,7 @@ What you will find here is demo code from lectures plus my attempt at programmin
 
 #### 🖥 Programming Project
 - [x] 1: `Calculator`
-- [ ] 2: `Calculator Brain`
+- [x] 2: `Calculator Brain`
 - [ ] 3: `Graphing Calculator`
 - [ ] 4: `Smashtag Mentions`   
 - [ ] 5: `Smashtag Mentions Popularity`

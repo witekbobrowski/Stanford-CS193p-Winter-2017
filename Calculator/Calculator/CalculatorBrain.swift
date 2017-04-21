@@ -70,54 +70,55 @@ struct CalculatorBrain {
     // Programming Assingment 2 : Task 4
     func evaluate(using variables: Dictionary<String, Double>? = nil) -> (result: Double?, isPending: Bool, description: String){
         
-        // Under construction! Thanks Paul for making evaluate() NOT mutating... 
-        
-        var result: Double?
-        var isPending: Bool = false
-        var description: String = ""
-        
-        var tempSequence = sequence
-        var tempDescription = ""
+        var tempAccumulator: (Double, String)?
+        var pendingOperation: PendingBinaryOperation?
+        var isPending: Bool {
+            get{
+                if pendingOperation != nil {
+                    return true
+                } else {
+                    return false
+                }
+            }
+        }
         
         func performOperation(_ operation: Operation){
             switch operation {
             case .constant(let value, let symbol):
-                result = value
-                tempDescription = symbol
+                tempAccumulator = (value, symbol)
             case .unaryOperation(let function, let text):
-                if result != nil {
-                    result = function(result!)
+                if tempAccumulator != nil {
+                    tempAccumulator = (function(tempAccumulator!.0), text(tempAccumulator!.1))
                 }
-                tempDescription = text(description)
             case .binaryOperation(let function, let text):
-                if result != nil {
-                    
-                    isPending = true
+                if tempAccumulator != nil {
+                    pendingOperation = PendingBinaryOperation(description: text, function: function, firstOperand: tempAccumulator!)
+                    tempAccumulator = nil
                 }
             case .equals:
-                isPending = false
+                if pendingOperation != nil && tempAccumulator != nil{
+                    tempAccumulator = pendingOperation?.perform(with: tempAccumulator!)
+                    pendingOperation = nil
+                }
             }
         }
 
-        for entry in tempSequence {
+        for entry in sequence {
             switch entry{
             case .operand(let value):
-                result = value
-                tempDescription = String(value)
+                tempAccumulator = (value, "\(value)")
             case .operation(let operation):
                 performOperation(operation)
             case .variable(let variable):
-                tempDescription = variable
                 if let dictionary = variables {
-                    result = dictionary[variable]
+                    tempAccumulator = (dictionary[variable] ?? 0, variable)
                 } else {
-                    result = 0
+                    tempAccumulator = (0, variable)
                 }
             }
-            description += tempDescription
         }
-    
-        return (result, isPending, description)
+        
+        return (tempAccumulator?.0, isPending, tempAccumulator?.1 ?? " ")
     }
     
     private mutating func performPendingBinaryOperation() {
@@ -150,6 +151,13 @@ struct CalculatorBrain {
         accumulator = (0, named)
     }
     
+    mutating func undo(){
+        if sequence.count != 0{
+            sequence.removeLast()
+        }
+    }
+    
+    @available(iOS, deprecated, message: "irrelevant, thanks to evaluate()")
     var result: Double? {
         get {
             if accumulator != nil {
@@ -160,6 +168,7 @@ struct CalculatorBrain {
         }
     }
     
+    @available(iOS, deprecated, message: "irrelevant, thanks to evaluate()")
     var resultIsPending: Bool {
         get {
             if pendingBinaryOperation != nil {
@@ -170,7 +179,7 @@ struct CalculatorBrain {
         }
     }
     
-    
+    @available(iOS, deprecated, message: "irrelevant, thanks to evaluate()")
     var description: String? {
         get {
             if resultIsPending {
@@ -190,4 +199,3 @@ struct CalculatorBrain {
         }
     }
 }
-
