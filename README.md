@@ -1,6 +1,6 @@
 # Stanford CS193p Winter 2017
 What you will find here is demo code from lectures plus my attempt at programming assignments from "Developing iOS 10 Apps with Swift” course by Stanford University.
-#### Course Outline
+#### 🎓 Course Outline
 
 - I. `Introduction`
 - II. `MVC`
@@ -15,7 +15,7 @@ What you will find here is demo code from lectures plus my attempt at programmin
 - XI. `Segues`
 - XII. `Notifications, Application Lifecycle, Persistence`
 
-#### Lectures
+#### 🎥 Lectures
 - [x] 1. `Introduction to iOS 10, Xcode 8 and Swift 3`
 - [x] 2. `MVC; iOS, Xcode and Swift Demonstration`
 - [x] 3. `More Swift and the Foundation Framework`
@@ -31,15 +31,13 @@ What you will find here is demo code from lectures plus my attempt at programmin
 - [ ] 13. `Timer and Animation`
 - [ ] 14. `Dynamic Animation Demo`
 - [ ] 15. `More Segues`
-...
 
-#### Programming Project
+#### 🖥 Programming Project
 - [x] 1: `Calculator`
-- [ ] 2: `Calculator Brain`
+- [x] 2: `Calculator Brain`
 - [ ] 3: `Graphing Calculator`
 - [ ] 4: `Smashtag Mentions`   
 - [ ] 5: `Smashtag Mentions Popularity`
-...   
 
 Disclaimer: Huge part of the code you will find here is not mine since the course wants you to follow the demo and then expand its functionallity with programming assignments.   
 [Direct link to iTunes](https://itunes.apple.com/pl/course/developing-ios-10-apps-with-swift/id1198467120)   

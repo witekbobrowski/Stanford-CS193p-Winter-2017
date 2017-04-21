@@ -11,10 +11,10 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var display: UILabel!
+    @IBOutlet weak var variableDisplay: UILabel!
     @IBOutlet weak var descriptionDisplay: UILabel!
     
     var userIsInTheMiddleOfTyping = false
-    
     
     @IBAction func touchDigit(_ sender: UIButton) {
         let digit = sender.currentTitle!
@@ -49,18 +49,66 @@ class ViewController: UIViewController {
         }
     }
     
+    var displayVariable: Double{
+        get {
+            if variableDictionary.count != 0 {
+                return (variableDictionary["M"])!
+            } else {
+                return 0
+            }
+        }
+        set{
+            if variableDictionary.count != 0 {
+                variableDisplay.text = "M = \(newValue)"
+            } else {
+                variableDisplay.text = " "
+            }
+        }
+    }
+    
+    var evaluatedResult: (result: Double?, isPending: Bool, description: String)? = nil{
+        didSet {
+            if let result = evaluatedResult!.result{
+                displayValue = result
+            }
+            descriptionDisplay.text = (evaluatedResult!.isPending ? "\(evaluatedResult!.description) ..." : "\(evaluatedResult!.description) = ")
+        }
+    }
+    
     private var brain = CalculatorBrain()
+    private var variableDictionary = [String: Double]()
     
     @IBAction func clear(_ sender: UIButton) {
         display.text = "0"
         descriptionDisplay.text = " "
+        variableDisplay.text = " "
         userIsInTheMiddleOfTyping = false
+        variableDictionary = [:]
         brain = CalculatorBrain()
     }
     
+    @IBAction func setVariable(_ sender: UIButton) {
+        // Programming Assingment 2 : Task 7
+        let symbol = String(sender.currentTitle!.characters.dropFirst())
+        variableDictionary[symbol] = displayValue
+        displayVariable = displayValue
+        evaluatedResult = brain.evaluate(using: variableDictionary)
+        userIsInTheMiddleOfTyping = false
+    }
+    
+    @IBAction func enterVariable(_ sender: UIButton) {
+        // Programming Assingment 2 : Task 7
+        brain.setOperand(variable: sender.currentTitle!)
+        evaluatedResult = brain.evaluate()
+    }
+    
+    @IBAction func undo(_ sender: UIButton) {
+        // Programming Assingment 2 : Task 10
+        brain.undo()
+        evaluatedResult = brain.evaluate(using: variableDictionary)
+    }
+    
     @IBAction func performOperation(_ sender: UIButton) {
-        brain.formatter.maximumFractionDigits = 6
-        brain.formatter.numberStyle = .decimal
         if userIsInTheMiddleOfTyping {
             brain.setOperand(displayValue)
             userIsInTheMiddleOfTyping = false
@@ -68,12 +116,10 @@ class ViewController: UIViewController {
         if let mathematicalSymbol = sender.currentTitle {
             brain.performOperation(mathematicalSymbol)
         }
-        if let result = brain.result {
+        if let result = brain.evaluate(using: variableDictionary).result {
             displayValue = result
         }
-        if let description = brain.description {
-            descriptionDisplay.text = description + (brain.resultIsPending ? "..." : " = ")
-        }
+        descriptionDisplay.text = brain.evaluate(using: variableDictionary).description + (brain.evaluate(using: variableDictionary).isPending ? "..." : " = ")
     }
     
 }
