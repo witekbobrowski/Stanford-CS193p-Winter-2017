@@ -22,7 +22,7 @@ What you will find here is demo code from lectures plus my attempt at programmin
 - [x] 4. `Views`
 - [x] 5. `Gestures and Multiple MVCs`
 - [x] 6. `Multiple MVCs, View Controller Lifecycle, and Memory Management`
-- [ ] 7. `Error Handling, Extensions, Protocols, Delegation, and Scroll View`
+- [x] 7. `Error Handling, Extensions, Protocols, Delegation, and Scroll View`
 - [ ] 8. `Multithreading and Text Field`
 - [ ] 9. `Table View`
 - [ ] 10. `Core Data`
