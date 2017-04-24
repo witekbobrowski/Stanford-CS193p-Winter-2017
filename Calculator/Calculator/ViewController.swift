@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var descriptionDisplay: UILabel!
     
     var userIsInTheMiddleOfTyping = false
-    
+
     @IBAction func touchDigit(_ sender: UIButton) {
         let digit = sender.currentTitle!
         if userIsInTheMiddleOfTyping{
@@ -121,5 +121,15 @@ class ViewController: UIViewController {
         }
         descriptionDisplay.text = brain.evaluate(using: variableDictionary).description + (brain.evaluate(using: variableDictionary).isPending ? "..." : " = ")
     }
+    
+    /*
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        brain.addUnaryOperation(named: "✅") { [unowned self] in
+            self.display.textColor = UIColor.green
+            return sqrt($0)
+        }
+    }
+    */
     
 }
