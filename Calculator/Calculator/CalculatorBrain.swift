@@ -76,7 +76,7 @@ struct CalculatorBrain {
     // Programming Assingment 2 : Task 4
     func evaluate(using variables: Dictionary<String, Double>? = nil) -> (result: Double?, isPending: Bool, description: String){
         
-        var tempAccumulator: (Double, String)?
+        var result: (Double, String)?
         var pendingOperation: PendingBinaryOperation?
         var isPending: Bool {
             get{
@@ -91,19 +91,19 @@ struct CalculatorBrain {
         func performOperation(_ operation: Operation){
             switch operation {
             case .constant(let value, let symbol):
-                tempAccumulator = (value, symbol)
-            case .unaryOperation(let function, let text):
-                if tempAccumulator != nil {
-                    tempAccumulator = (function(tempAccumulator!.0), text(tempAccumulator!.1))
+                result = (value, symbol)
+            case .unaryOperation(let function, let description):
+                if result != nil {
+                    result = (function(result!.0), description(result!.1))
                 }
-            case .binaryOperation(let function, let text):
-                if tempAccumulator != nil {
-                    pendingOperation = PendingBinaryOperation(description: text, function: function, firstOperand: tempAccumulator!)
-                    tempAccumulator = nil
+            case .binaryOperation(let function, let description):
+                if result != nil {
+                    pendingOperation = PendingBinaryOperation(description: description, function: function, firstOperand: result!)
+                    result = nil
                 }
             case .equals:
-                if pendingOperation != nil && tempAccumulator != nil{
-                    tempAccumulator = pendingOperation?.perform(with: tempAccumulator!)
+                if pendingOperation != nil && result != nil{
+                    result = pendingOperation?.perform(with: result!)
                     pendingOperation = nil
                 }
             }
@@ -112,19 +112,24 @@ struct CalculatorBrain {
         for entry in sequence {
             switch entry{
             case .operand(let value):
-                tempAccumulator = (value, "\(value)")
+                result = (value, "\(value)")
             case .operation(let operation):
                 performOperation(operation)
             case .variable(let variable):
                 if let dictionary = variables {
-                    tempAccumulator = (dictionary[variable] ?? 0, variable)
+                    result = (dictionary[variable] ?? 0, variable)
                 } else {
-                    tempAccumulator = (0, variable)
+                    result = (0, variable)
                 }
             }
         }
         
-        return (tempAccumulator?.0, isPending, tempAccumulator?.1 ?? " ")
+        if isPending {
+            return (result?.0, isPending, pendingOperation!.description(pendingOperation!.firstOperand.1, result?.1 ?? ""))
+        } else {
+            return (result?.0, isPending, result?.1 ?? "")
+        }
+        
     }
     
     private mutating func performPendingBinaryOperation() {
@@ -158,12 +163,12 @@ struct CalculatorBrain {
     }
     
     mutating func undo(){
-        if sequence.count != 0{
+        if !sequence.isEmpty{
             sequence.removeLast()
         }
     }
     
-    @available(iOS, deprecated, message: "irrelevant, thanks to evaluate()")
+    @available(iOS, deprecated, message: "irrelevant, use evaluate()")
     var result: Double? {
         get {
             if accumulator != nil {
@@ -174,7 +179,7 @@ struct CalculatorBrain {
         }
     }
     
-    @available(iOS, deprecated, message: "irrelevant, thanks to evaluate()")
+    @available(iOS, deprecated, message: "irrelevant, use evaluate()")
     var resultIsPending: Bool {
         get {
             if pendingBinaryOperation != nil {
@@ -185,7 +190,7 @@ struct CalculatorBrain {
         }
     }
     
-    @available(iOS, deprecated, message: "irrelevant, thanks to evaluate()")
+    @available(iOS, deprecated, message: "irrelevant, use evaluate()")
     var description: String? {
         get {
             if resultIsPending {
