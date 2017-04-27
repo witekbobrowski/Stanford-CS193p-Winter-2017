@@ -206,6 +206,7 @@ struct CalculatorBrain {
             let formatter = NumberFormatter()
             formatter.maximumFractionDigits = 6
             formatter.numberStyle = .decimal
+            formatter.decimalSeparator = "."
             return formatter
         }
     }

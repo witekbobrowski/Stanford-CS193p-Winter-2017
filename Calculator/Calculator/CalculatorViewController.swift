@@ -122,14 +122,30 @@ class CalculatorViewController: UIViewController {
         descriptionDisplay.text = brain.evaluate(using: variableDictionary).description + (brain.evaluate(using: variableDictionary).isPending ? "..." : " = ")
     }
     
-    /*
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        brain.addUnaryOperation(named: "✅") { [unowned self] in
-            self.display.textColor = UIColor.green
-            return sqrt($0)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        var destinationViewController = segue.destination
+        
+        if let navigationController = destinationViewController as? UINavigationController {
+            destinationViewController = navigationController.visibleViewController ?? destinationViewController
+        }
+        
+        if let graphingViewController = destinationViewController as? GraphingViewController {
+            graphingViewController.function = {(x: CGFloat) -> Double? in
+                self.variableDictionary["M"] = Double(x)
+                return self.brain.evaluate(using: self.variableDictionary).result
+            }
         }
     }
-    */
+    
+//    Lecture 6 demo code
+//      
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        brain.addUnaryOperation(named: "✅") { [unowned self] in
+//            self.display.textColor = UIColor.green
+//            return sqrt($0)
+//        }
+//    }
+// 
     
 }

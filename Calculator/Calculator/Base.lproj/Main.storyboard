@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0VR-YM-OLY">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,6 +10,19 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Split View Controller-->
+        <scene sceneID="rg8-Sl-9RH">
+            <objects>
+                <splitViewController id="0VR-YM-OLY" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="masterViewController" id="v29-87-my7"/>
+                        <segue destination="RDd-y4-pDB" kind="relationship" relationship="detailViewController" id="5aw-gV-j03"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4B5-bx-Abs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1257" y="-969"/>
+        </scene>
         <!--Calculator View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -72,7 +85,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="81"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dOu-nS-vY4">
-                                                                <rect key="frame" x="0.0" y="0.0" width="78.5" height="81"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="60.5" height="81"/>
                                                                 <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
                                                                 <state key="normal" title="C">
@@ -84,7 +97,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vBT-1J-FWW">
-                                                                <rect key="frame" x="88.5" y="0.0" width="78" height="81"/>
+                                                                <rect key="frame" x="70.5" y="0.0" width="60.5" height="81"/>
                                                                 <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
                                                                 <state key="normal" title="→M">
@@ -95,7 +108,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jbG-qC-ys6">
-                                                                <rect key="frame" x="176.5" y="0.0" width="78.5" height="81"/>
+                                                                <rect key="frame" x="141" y="0.0" width="61" height="81"/>
                                                                 <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
                                                                 <state key="normal" title="M">
@@ -106,7 +119,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yM6-oY-TvE">
-                                                                <rect key="frame" x="265" y="0.0" width="78" height="81"/>
+                                                                <rect key="frame" x="212" y="0.0" width="60.5" height="81"/>
                                                                 <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
                                                                 <state key="normal" title="←">
@@ -114,6 +127,17 @@
                                                                 </state>
                                                                 <connections>
                                                                     <action selector="undo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="i2m-Z4-ryl"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMt-hm-qst">
+                                                                <rect key="frame" x="282.5" y="0.0" width="60.5" height="81"/>
+                                                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
+                                                                <state key="normal" title="📈">
+                                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <segue destination="RDd-y4-pDB" kind="showDetail" identifier="Show GraphView" id="xxw-gY-p6F"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -411,7 +435,62 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="396" y="-760"/>
+            <point key="canvasLocation" x="-290" y="-1366"/>
+        </scene>
+        <!--Graphing View Controller-->
+        <scene sceneID="FDI-iZ-Y0d">
+            <objects>
+                <viewController id="AVR-wF-9ty" customClass="GraphingViewController" customModule="Calculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aDx-6x-hXr"/>
+                        <viewControllerLayoutGuide type="bottom" id="d1d-YZ-zrx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="z9b-af-uQy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WjO-qb-u0I">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="WjO-qb-u0I" secondAttribute="trailing" id="AZR-lK-Xov"/>
+                            <constraint firstItem="WjO-qb-u0I" firstAttribute="top" secondItem="z9b-af-uQy" secondAttribute="top" id="IqF-vZ-z5u"/>
+                            <constraint firstItem="WjO-qb-u0I" firstAttribute="leading" secondItem="z9b-af-uQy" secondAttribute="leading" id="pCO-oe-njd"/>
+                            <constraint firstItem="WjO-qb-u0I" firstAttribute="bottom" secondItem="d1d-YZ-zrx" secondAttribute="top" id="za2-eq-Uhe"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="zLW-iy-A6d"/>
+                    <connections>
+                        <outlet property="graphView" destination="WjO-qb-u0I" id="GeQ-Xa-FeS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m1w-d8-TsN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="648.79999999999995" y="-638.2308845577212"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="IIM-03-JJm">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RDd-y4-pDB" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wIm-IV-Yqn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="AVR-wF-9ty" kind="relationship" relationship="rootViewController" id="6PG-mY-vre"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PHN-XB-7Ka" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-290.39999999999998" y="-638.2308845577212"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="xxw-gY-p6F"/>
+    </inferredMetricsTieBreakers>
 </document>
