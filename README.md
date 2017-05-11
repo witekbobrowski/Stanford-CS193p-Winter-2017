@@ -5,6 +5,7 @@
 </p>
 
 ## CS193p Winter 2017
+
 What you will find here is demo code from lectures plus my attempt at programming assignments from "Developing iOS 10 Apps with Swift” course by Stanford University.
 #### 🎓 Course Outline
 
