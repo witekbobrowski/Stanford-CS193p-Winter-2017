@@ -30,7 +30,7 @@ What you will find here is demo code from lectures plus my attempt at programmin
 - [x] 6. `Multiple MVCs, View Controller Lifecycle, and Memory Management`
 - [x] 7. `Error Handling, Extensions, Protocols, Delegation, and Scroll View`
 - [x] 8. `Multithreading and Text Field`
-- [ ] 9. `Table View`
+- [x] 9. `Table View`
 - [ ] 10. `Core Data`
 - [ ] 11. `Core Data Demo`
 - [ ] 12. `Autolayout`
