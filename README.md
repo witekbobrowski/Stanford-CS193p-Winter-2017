@@ -7,8 +7,8 @@
 ## CS193p Winter 2017
 
 What you will find here is demo code from lectures plus my attempt at programming assignments from "Developing iOS 10 Apps with Swift” course by Stanford University.
-#### 🎓 Course Outline
 
+#### 🎓 Course Outline
 - II. `MVC`
 - III. `Swift`
 - IV. `Views, Gestures, and Closures`
@@ -29,7 +29,7 @@ What you will find here is demo code from lectures plus my attempt at programmin
 - [x] 5. `Gestures and Multiple MVCs`
 - [x] 6. `Multiple MVCs, View Controller Lifecycle, and Memory Management`
 - [x] 7. `Error Handling, Extensions, Protocols, Delegation, and Scroll View`
-- [ ] 8. `Multithreading and Text Field`
+- [x] 8. `Multithreading and Text Field`
 - [ ] 9. `Table View`
 - [ ] 10. `Core Data`
 - [ ] 11. `Core Data Demo`
