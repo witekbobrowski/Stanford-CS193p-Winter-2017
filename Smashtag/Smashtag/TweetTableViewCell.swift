@@ -19,7 +19,7 @@ class TweetTableViewCell: UITableViewCell {
     var tweet: Twitter.Tweet? { didSet { updateUI() } }
     
     private func updateUI() {
-        tweetTextLabel?.text = tweet?.text
+        tweetTextLabel?.attributedText = tweet?.attributedText
         tweetUserLabel?.text = tweet?.user.description
         if let profileImageURL = tweet?.user.profileImageURL {
             // FIXME: blocks main thread
@@ -42,4 +42,27 @@ class TweetTableViewCell: UITableViewCell {
         }
     }
 
+}
+
+// Programming Assingment 4 : Task 1
+extension Tweet {
+
+    var attributedText: NSAttributedString {
+        
+        let text = NSMutableAttributedString(string: self.text)
+        
+        for hashtag in self.hashtags {
+            text.addAttribute(NSForegroundColorAttributeName, value: UIColor.cyan, range: hashtag.nsrange)
+        }
+        
+        for userMention in self.userMentions {
+            text.addAttribute(NSForegroundColorAttributeName, value: UIColor.orange, range: userMention.nsrange)
+        }
+        
+        for url in self.urls {
+            text.addAttribute(NSForegroundColorAttributeName, value: UIColor.blue, range: url.nsrange)
+        }
+        
+        return text
+    }
 }
