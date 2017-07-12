@@ -12,11 +12,7 @@ import Twitter
 
 class TweetTableViewController: UITableViewController, UITextFieldDelegate {
 
-    private var tweets = [Array<Twitter.Tweet>]() {
-        didSet {
-            print(tweets)
-        }
-    }
+    private var tweets = [Array<Twitter.Tweet>]()
     
     var searchText: String? {
         didSet {
@@ -43,6 +39,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
         if let request = lastTwitterRequest?.newer ?? twitterRequest() {
             lastTwitterRequest = request
             request.fetchTweets { [weak self] newTweets in
+                // Programming Assingment 4 : Task 9
                 DispatchQueue.main.async {
                     if request == self?.lastTwitterRequest{
                         self?.tweets.insert(newTweets, at: 0)
@@ -89,11 +86,18 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
         return tweets[section].count
     }
     
+    // Programming Assingment 4 : Task 2
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! TweetTableViewCell
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let detailTableViewController = storyboard.instantiateViewController(withIdentifier: "tweetDetailTableView") as! DetailTableViewController
+        detailTableViewController.tweet = cell.tweet
+        self.navigationController?.pushViewController(detailTableViewController, animated: true)
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Tweet", for: indexPath)
         let tweet: Tweet = tweets[indexPath.section][indexPath.row]
-//        cell.textLabel?.text = tweet.text
-//        cell.detailTextLabel?.text = tweet.user.name
         if let tweetCell = cell as? TweetTableViewCell {
             tweetCell.tweet = tweet
         }
