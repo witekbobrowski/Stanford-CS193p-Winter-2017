@@ -119,15 +119,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="45" reuseIdentifier="imageCell" rowHeight="124" id="bM4-xl-CLV" customClass="DetailImageTableViewCell" customModule="Smashtag" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="124"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="45" reuseIdentifier="imageCell" id="bM4-xl-CLV" customClass="DetailImageTableViewCell" customModule="Smashtag" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bM4-xl-CLV" id="eZ4-SR-Gt7">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="123.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a86-6S-LIT">
-                                            <rect key="frame" x="8" y="8" width="359" height="107.5"/>
+                                            <rect key="frame" x="8" y="8" width="359" height="27.5"/>
                                         </imageView>
                                     </subviews>
                                     <constraints>
@@ -138,13 +138,11 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="detailImageView" destination="a86-6S-LIT" id="tSk-2R-yl2"/>
-                                    <outlet property="image" destination="a86-6S-LIT" id="egM-ik-Riz"/>
-                                    <outlet property="imageView" destination="a86-6S-LIT" id="DMZ-TO-vxq"/>
+                                    <outlet property="detailImageView" destination="a86-6S-LIT" id="dhm-vD-tjI"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="mentionCell" id="gFQ-sg-67G" customClass="DetailMentionTableViewCell" customModule="Smashtag" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="152" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gFQ-sg-67G" id="Bkv-dn-em8">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -188,7 +186,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5u4-F5-MSi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1276" y="-271"/>
+            <point key="canvasLocation" x="1378" y="-270"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="MmE-nU-2fu">
@@ -207,6 +205,45 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A7y-xa-Wwv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-143.19999999999999" y="-270.31484257871068"/>
+        </scene>
+        <!--Image View Controller-->
+        <scene sceneID="eK2-UN-cyf">
+            <objects>
+                <viewController storyboardIdentifier="imageView" id="sYj-eQ-iyY" customClass="ImageViewController" customModule="Smashtag" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xX9-3a-Z0N"/>
+                        <viewControllerLayoutGuide type="bottom" id="cqq-hQ-FU4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="AOG-nl-Dxq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IE1-Dg-LPu">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </scrollView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="isN-Wc-3uK">
+                                <rect key="frame" x="170" y="316" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="IE1-Dg-LPu" firstAttribute="leading" secondItem="AOG-nl-Dxq" secondAttribute="leading" id="DJT-II-p20"/>
+                            <constraint firstAttribute="trailing" secondItem="IE1-Dg-LPu" secondAttribute="trailing" id="QFY-UU-mZZ"/>
+                            <constraint firstItem="IE1-Dg-LPu" firstAttribute="top" secondItem="AOG-nl-Dxq" secondAttribute="top" id="guL-v8-Vdh"/>
+                            <constraint firstItem="IE1-Dg-LPu" firstAttribute="bottom" secondItem="cqq-hQ-FU4" secondAttribute="top" id="zSN-Hr-Mfr"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ONG-aX-Cbh"/>
+                    <connections>
+                        <outlet property="scrollView" destination="IE1-Dg-LPu" id="khz-a2-aig"/>
+                        <outlet property="spinner" destination="isN-Wc-3uK" id="Ycz-67-T3E"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iRw-ZT-E1K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2215" y="-272"/>
         </scene>
     </scenes>
 </document>

@@ -35,8 +35,11 @@ class DetailTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Programming Assingment 4 : Task 7
         switch dataSource!.dataForRowAt(indexPath: indexPath) {
-        //case .images(let images):
-            
+        case .image(let image):
+            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let imageView = storyboard.instantiateViewController(withIdentifier: "imageView") as! ImageViewController
+            imageView.imageURL = image.url
+            self.navigationController?.pushViewController(imageView, animated: true)
         // Programming Assingment 4 : Task 5
         case .hashtag(let mention), .userMention(let mention):
             let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
@@ -46,20 +49,28 @@ class DetailTableViewController: UITableViewController {
         // Programming Assingment 4 : Task 6
         case .url(let url):
             UIApplication.shared.open(URL(string: url.keyword)!, options: [:], completionHandler: { print($0)})
-        default:
-            break
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch dataSource!.dataForRowAt(indexPath: indexPath) {
+        // Programming Assingment 4 : Task 3
+        case .image(let image):
+            return view.bounds.width / CGFloat(image.aspectRatio)
+        case .hashtag, .userMention, .url:
+            return UITableViewAutomaticDimension
+        }
+
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell
         switch dataSource!.dataForRowAt(indexPath: indexPath) {
-        // Programming Assingment 4 : Task 3
         case .image(let image):
             cell = tableView.dequeueReusableCell(withIdentifier: "imageCell", for: indexPath)
-            //if let cell = cell as? DetailImageTableViewCell {
-            //    cell.imageURL = image.url
-            //}
+            if let cell = cell as? DetailImageTableViewCell {
+                cell.imageURL = image.url
+            }
         case .hashtag(let mention), .userMention(let mention), .url(let mention):
             cell = tableView.dequeueReusableCell(withIdentifier: "mentionCell", for: indexPath)
             if let cell = cell as? DetailMentionTableViewCell {

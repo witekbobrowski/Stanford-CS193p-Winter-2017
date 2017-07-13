@@ -19,6 +19,7 @@
 		412874281F165F6A0073E390 /* DetailImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412874271F165F6A0073E390 /* DetailImageTableViewCell.swift */; };
 		4128742E1F1699D60073E390 /* DetailMentionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4128742D1F1699D60073E390 /* DetailMentionTableViewCell.swift */; };
 		412874301F16A87C0073E390 /* TweetDetailViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4128742F1F16A87C0073E390 /* TweetDetailViewDataSource.swift */; };
+		412B82A11F17D977003285E9 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412B82A01F17D977003285E9 /* ImageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -49,6 +50,7 @@
 		412874271F165F6A0073E390 /* DetailImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailImageTableViewCell.swift; sourceTree = "<group>"; };
 		4128742D1F1699D60073E390 /* DetailMentionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailMentionTableViewCell.swift; sourceTree = "<group>"; };
 		4128742F1F16A87C0073E390 /* TweetDetailViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetDetailViewDataSource.swift; sourceTree = "<group>"; };
+		412B82A01F17D977003285E9 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				412874271F165F6A0073E390 /* DetailImageTableViewCell.swift */,
 				4128742D1F1699D60073E390 /* DetailMentionTableViewCell.swift */,
 				4128742F1F16A87C0073E390 /* TweetDetailViewDataSource.swift */,
+				412B82A01F17D977003285E9 /* ImageViewController.swift */,
 				410ACEC91EC6125000469E8F /* TweetTableViewController.swift */,
 				410ACEDD1EC624D600469E8F /* TweetTableViewCell.swift */,
 				410ACEBA1EC6120200469E8F /* Main.storyboard */,
@@ -186,6 +189,7 @@
 				412874261F165F120073E390 /* DetailTableViewController.swift in Sources */,
 				412874281F165F6A0073E390 /* DetailImageTableViewCell.swift in Sources */,
 				4128742E1F1699D60073E390 /* DetailMentionTableViewCell.swift in Sources */,
+				412B82A11F17D977003285E9 /* ImageViewController.swift in Sources */,
 				410ACEDE1EC624D600469E8F /* TweetTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
