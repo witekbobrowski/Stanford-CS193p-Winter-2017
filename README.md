@@ -32,7 +32,7 @@ What you will find here is demo code from lectures plus my attempt at programmin
 - [x] 8. `Multithreading and Text Field`
 - [x] 9. `Table View`
 - [x] 10. `Core Data`
-- [ ] 11. `Core Data Demo`
+- [x] 11. `Core Data Demo`
 - [ ] 12. `Autolayout`
 - [ ] 13. `Timer and Animation`
 - [ ] 14. `Dynamic Animation Demo`

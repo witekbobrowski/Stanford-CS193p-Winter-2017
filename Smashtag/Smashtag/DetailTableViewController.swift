@@ -13,7 +13,7 @@ class DetailTableViewController: UITableViewController {
 
     var dataSource: TweetDetailViewDataSouce?
     
-    var tweet: Tweet? {
+    var tweet: Twitter.Tweet? {
         willSet {
             dataSource = TweetDetailViewDataSouce(tweet: newValue!)
             title = newValue?.user.name

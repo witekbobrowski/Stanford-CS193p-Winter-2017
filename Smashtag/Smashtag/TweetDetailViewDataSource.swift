@@ -56,7 +56,7 @@ class TweetDetailViewDataSouce {
         }
     }
     
-    init(tweet: Tweet) {
+    init(tweet: Twitter.Tweet) {
         if !tweet.media.isEmpty {
             sections.append(TweetDetailViewSection.images(tweet.media))
         }

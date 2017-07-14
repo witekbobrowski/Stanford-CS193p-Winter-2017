@@ -48,7 +48,7 @@ class TweetTableViewCell: UITableViewCell {
 }
 
 // Programming Assingment 4 : Task 1
-extension Tweet {
+extension Twitter.Tweet {
 
     var attributedText: NSAttributedString {
         
