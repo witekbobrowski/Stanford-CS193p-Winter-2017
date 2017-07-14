@@ -36,13 +36,17 @@ class ImageViewController: UIViewController {
         }
     }
     
+    override func viewDidLayoutSubviews() {
+        scrollView.zoom(to: imageView.frame, animated: true)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if image == nil {
             fetchImage()
         }
-        
     }
+    
     
     @IBOutlet weak var scrollView: UIScrollView!{
         didSet{

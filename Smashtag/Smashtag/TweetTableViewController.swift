@@ -13,9 +13,14 @@ import Twitter
 class TweetTableViewController: UITableViewController, UITextFieldDelegate {
 
     private var tweets = [Array<Twitter.Tweet>]()
+    var recents = Recents()
     
     var searchText: String? {
         didSet {
+            fetchRecents()
+            recents.append(keyword: searchText!)
+            let encodedData = NSKeyedArchiver.archivedData(withRootObject: recents)
+            UserDefaults.standard.set(encodedData, forKey: "recents")
             searchTextField?.text = searchText
             searchTextField?.resignFirstResponder()
             lastTwitterRequest = nil
@@ -60,9 +65,17 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
         super.viewDidLoad()
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
-        //searchText = "#stanford"
+        fetchRecents()
     }
     
+    
+    private func fetchRecents() {
+        if let data = UserDefaults.standard.data(forKey: "recents"),
+            let fetchedRecents = NSKeyedUnarchiver.unarchiveObject(with: data) as? Recents {
+            recents = fetchedRecents
+        }
+    }
+
     @IBOutlet weak var searchTextField: UITextField! {
         didSet {
             searchTextField.delegate = self

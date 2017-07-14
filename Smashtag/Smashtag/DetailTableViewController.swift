@@ -32,26 +32,6 @@ class DetailTableViewController: UITableViewController {
         return dataSource!.numberOfRowsInSection(section: section)
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // Programming Assingment 4 : Task 7
-        switch dataSource!.dataForRowAt(indexPath: indexPath) {
-        case .image(let image):
-            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-            let imageView = storyboard.instantiateViewController(withIdentifier: "imageView") as! ImageViewController
-            imageView.imageURL = image.url
-            self.navigationController?.pushViewController(imageView, animated: true)
-        // Programming Assingment 4 : Task 5
-        case .hashtag(let mention), .userMention(let mention):
-            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-            let tweetsTableViewController = storyboard.instantiateViewController(withIdentifier: "tweetsTableView") as! TweetTableViewController
-            tweetsTableViewController.searchText = mention.keyword
-            self.navigationController?.pushViewController(tweetsTableViewController, animated: true)
-        // Programming Assingment 4 : Task 6
-        case .url(let url):
-            UIApplication.shared.open(URL(string: url.keyword)!, options: [:], completionHandler: { print($0)})
-        }
-    }
-    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch dataSource!.dataForRowAt(indexPath: indexPath) {
         // Programming Assingment 4 : Task 3
@@ -78,6 +58,26 @@ class DetailTableViewController: UITableViewController {
             }
         }
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Programming Assingment 4 : Task 7
+        switch dataSource!.dataForRowAt(indexPath: indexPath) {
+        case .image(let image):
+            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let imageView = storyboard.instantiateViewController(withIdentifier: "imageView") as! ImageViewController
+            imageView.imageURL = image.url
+            self.navigationController?.pushViewController(imageView, animated: true)
+        // Programming Assingment 4 : Task 5
+        case .hashtag(let mention), .userMention(let mention):
+            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let tweetsTableView = storyboard.instantiateViewController(withIdentifier: "tweetsTableView") as! TweetTableViewController
+            tweetsTableView.searchText = mention.keyword
+            self.navigationController?.pushViewController(tweetsTableView, animated: true)
+        // Programming Assingment 4 : Task 6
+        case .url(let url):
+            UIApplication.shared.open(URL(string: url.keyword)!, options: [:], completionHandler: { print($0)})
+        }
     }
     
     // Programming Assingment 4 : Task 4

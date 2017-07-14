@@ -20,6 +20,8 @@
 		4128742E1F1699D60073E390 /* DetailMentionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4128742D1F1699D60073E390 /* DetailMentionTableViewCell.swift */; };
 		412874301F16A87C0073E390 /* TweetDetailViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4128742F1F16A87C0073E390 /* TweetDetailViewDataSource.swift */; };
 		412B82A11F17D977003285E9 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412B82A01F17D977003285E9 /* ImageViewController.swift */; };
+		412B82A31F18E0C2003285E9 /* RecentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412B82A21F18E0C2003285E9 /* RecentsTableViewController.swift */; };
+		412B82A51F18EB25003285E9 /* RecentsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412B82A41F18EB25003285E9 /* RecentsDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -51,6 +53,8 @@
 		4128742D1F1699D60073E390 /* DetailMentionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailMentionTableViewCell.swift; sourceTree = "<group>"; };
 		4128742F1F16A87C0073E390 /* TweetDetailViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetDetailViewDataSource.swift; sourceTree = "<group>"; };
 		412B82A01F17D977003285E9 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		412B82A21F18E0C2003285E9 /* RecentsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentsTableViewController.swift; sourceTree = "<group>"; };
+		412B82A41F18EB25003285E9 /* RecentsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentsDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,13 +90,15 @@
 			isa = PBXGroup;
 			children = (
 				410ACEC81EC6120E00469E8F /* Supporting Files */,
-				412874251F165F120073E390 /* DetailTableViewController.swift */,
+				410ACEDD1EC624D600469E8F /* TweetTableViewCell.swift */,
 				412874271F165F6A0073E390 /* DetailImageTableViewCell.swift */,
 				4128742D1F1699D60073E390 /* DetailMentionTableViewCell.swift */,
-				4128742F1F16A87C0073E390 /* TweetDetailViewDataSource.swift */,
 				412B82A01F17D977003285E9 /* ImageViewController.swift */,
 				410ACEC91EC6125000469E8F /* TweetTableViewController.swift */,
-				410ACEDD1EC624D600469E8F /* TweetTableViewCell.swift */,
+				412874251F165F120073E390 /* DetailTableViewController.swift */,
+				412B82A21F18E0C2003285E9 /* RecentsTableViewController.swift */,
+				412B82A41F18EB25003285E9 /* RecentsDataSource.swift */,
+				4128742F1F16A87C0073E390 /* TweetDetailViewDataSource.swift */,
 				410ACEBA1EC6120200469E8F /* Main.storyboard */,
 				410ACEC21EC6120200469E8F /* Info.plist */,
 			);
@@ -186,8 +192,10 @@
 				410ACEB71EC6120200469E8F /* AppDelegate.swift in Sources */,
 				410ACECA1EC6125000469E8F /* TweetTableViewController.swift in Sources */,
 				412874301F16A87C0073E390 /* TweetDetailViewDataSource.swift in Sources */,
+				412B82A51F18EB25003285E9 /* RecentsDataSource.swift in Sources */,
 				412874261F165F120073E390 /* DetailTableViewController.swift in Sources */,
 				412874281F165F6A0073E390 /* DetailImageTableViewCell.swift in Sources */,
+				412B82A31F18E0C2003285E9 /* RecentsTableViewController.swift in Sources */,
 				4128742E1F1699D60073E390 /* DetailMentionTableViewCell.swift in Sources */,
 				412B82A11F17D977003285E9 /* ImageViewController.swift in Sources */,
 				410ACEDE1EC624D600469E8F /* TweetTableViewCell.swift in Sources */,
