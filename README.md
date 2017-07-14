@@ -44,7 +44,7 @@ What you will find here is demo code from lectures plus my attempt at programmin
 - [x] 1: `Calculator`
 - [x] 2: `Calculator Brain`
 - [x] 3: `Graphing Calculator`
-- [ ] 4: `Smashtag Mentions`   
+- [x] 4: `Smashtag Mentions`   
 - [ ] 5: `Smashtag Mentions Popularity`
 
 Disclaimer: Huge part of the code you will find here is not mine since the course wants you to follow the demo and then expand its functionality with programming assignments.
