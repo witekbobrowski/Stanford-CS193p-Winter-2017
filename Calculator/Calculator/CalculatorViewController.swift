@@ -123,9 +123,27 @@ class CalculatorViewController: UIViewController {
         descriptionDisplay.text = brain.evaluate(using: variableDictionary).description + (brain.evaluate(using: variableDictionary).isPending ? "..." : " = ")
     }
     
+    //MARK: - Lecture 12 demo code
+//    private func showSizeClasses() {
+//        if !userIsInTheMiddleOfTyping {
+//            display.textAlignment = .center
+//            display.text = "width " + traitCollection.horizontalSizeClass.description + " height " + traitCollection.verticalSizeClass.description
+//            
+//        }
+//    }
+    
     override func viewDidAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
+//        showSizeClasses()
     }
+    
+//    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+//        super.viewWillTransition(to: size, with: coordinator)
+//        coordinator.animate(alongsideTransition: { coordinator in
+//            self.showSizeClasses()
+//        }, completion: nil)
+//    }
+    
     
     // Programming Assingment 3 : Task7
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -144,7 +162,7 @@ class CalculatorViewController: UIViewController {
         }
     }
     
-//    Lecture 6 demo code
+//MARK: - Lecture 6 demo code
 //      
 //    override func viewDidLoad() {
 //        super.viewDidLoad()
@@ -156,3 +174,18 @@ class CalculatorViewController: UIViewController {
 // 
     
 }
+
+//extension UIUserInterfaceSizeClass: CustomStringConvertible {
+//    public var description: String {
+//        switch self {
+//        case .compact:
+//            return "Compact"
+//        case .unspecified:
+//            return "???"
+//        case .regular:
+//            return "Regular"
+//        }
+//    }
+//}
+
+
