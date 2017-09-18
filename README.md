@@ -1,10 +1,4 @@
-<p align="center">
-    <a href="https://itunes.apple.com/pl/course/developing-ios-10-apps-with-swift/id1198467120">
-        <img height=65 src="https://identity.stanford.edu/overview/images/signature/stanford-university.png">
-    </a>
-</p>
-
-## CS193p Winter 2017
+## Stanford CS193p Winter 2017
 
 What you will find here is demo code from lectures plus my attempt at programming assignments from "Developing iOS 10 Apps with Swift” course by Stanford University.
 
@@ -34,7 +28,7 @@ What you will find here is demo code from lectures plus my attempt at programmin
 - [x] 10. `Core Data`
 - [x] 11. `Core Data Demo`
 - [x] 12. `Autolayout`
-- [ ] 13. `Timer and Animation`
+- [x] 13. `Timer and Animation`
 - [ ] 14. `Dynamic Animation Demo`
 - [ ] 15. `More Segues`
 - [ ] 16. `Alerts and Action Sheets, Notifications, Application Lifecycle, and Persistence`
