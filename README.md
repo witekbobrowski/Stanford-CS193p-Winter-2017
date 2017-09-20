@@ -29,7 +29,7 @@ What you will find here is demo code from lectures plus my attempt at programmin
 - [x] 11. `Core Data Demo`
 - [x] 12. `Autolayout`
 - [x] 13. `Timer and Animation`
-- [ ] 14. `Dynamic Animation Demo`
+- [x] 14. `Dynamic Animation Demo`
 - [ ] 15. `More Segues`
 - [ ] 16. `Alerts and Action Sheets, Notifications, Application Lifecycle, and Persistence`
 - [ ] 17. `Accessibility`
