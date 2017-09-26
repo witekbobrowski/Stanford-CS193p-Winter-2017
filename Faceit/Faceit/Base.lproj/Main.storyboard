@@ -335,6 +335,10 @@
         <scene sceneID="FYs-t3-IMc">
             <objects>
                 <viewController id="IYS-Zo-KT5" customClass="BlinkingFaceViewController" customModule="Faceit" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tfZ-BQ-S5Y"/>
+                        <viewControllerLayoutGuide type="bottom" id="Wsb-1I-bOc"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="pYB-lE-rM6">
                         <rect key="frame" x="0.0" y="0.0" width="359" height="261.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -31,7 +31,7 @@ What you will find here is demo code from lectures plus my attempt at programmin
 - [x] 13. `Timer and Animation`
 - [x] 14. `Dynamic Animation Demo`
 - [x] 15. `More Segues`
-- [ ] 16. `Alerts and Action Sheets, Notifications, Application Lifecycle, and Persistence`
+- [x] 16. `Alerts and Action Sheets, Notifications, Application Lifecycle, and Persistence`
 - [ ] 17. `Accessibility`
 
 #### 🖥 Programming Project
